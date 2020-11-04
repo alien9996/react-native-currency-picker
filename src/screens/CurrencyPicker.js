@@ -86,7 +86,7 @@ export const CountryPicker = (props) => {
             >
                 {renderChildren ? renderChildren : <View style={{ flexDirection: "row" }}>
                     {showFlag && <CurrencyFlag currency={currencyCode} width={flagWidth} />}
-                    {showCurrencyCode && <Text style={[styles.txtCountryCode, countryCodeStyle]}>{code}</Text>}
+                    {showCurrencyCode && <Text style={[styles.txtCurrencyCode, countryCodeStyle]}>{code}</Text>}
                     {showCurrencyName && <Text style={[styles.txtCountryName, countryNameStyle]}>{currencyName}</Text>}
                     {showSymbol && <Text style={[styles.txtCountryName, countryNameStyle]}>{symbol}</Text>}
                     {showNativeSymbol && <Text style={[styles.txtCountryName, countryNameStyle]}>{symbolNative}</Text>}
@@ -113,18 +113,11 @@ export const CountryPicker = (props) => {
 };
 
 const styles = StyleSheet.create({
-    callingCodeStyle: {
-        ...Styles.fontDefault
-    },
-    flagStyle: {
-        marginRight: 5,
-        color: Colors.black
-    },
     txtCountryName: {
         ...Styles.fontDefault,
         marginLeft: 10
     },
-    txtCountryCode: {
+    txtCurrencyCode: {
         ...Styles.fontDefault,
         marginLeft: 10,
         fontWeight: "600"

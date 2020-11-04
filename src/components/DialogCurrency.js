@@ -19,7 +19,6 @@ export const DialogCurrency = (props) => {
 
     const {
         onSelectItem,
-        showCallingCode = true,
         title = "Currency",
         searchPlaceholder = "Search",
         textEmpty = "Empty data",
@@ -76,13 +75,14 @@ export const DialogCurrency = (props) => {
         setVisible(false)
     }
 
-    const renderItemTemplate = ({ name, emoji, code, callingCode }) => {
+    const renderItemTemplate = ({ code, symbol, symbol_native, name }) => {
         return (
             <View style={[styles.item, itemContainer]}>
-                <CurrencyFlag currency={currencyCode} width={flagWidth} />
+                <CurrencyFlag currency={code} width={flagWidth} />
                 <Text style={[styles.currencyName, currencyCodeStyle]}>{code}</Text>
-                <Text style={[styles.commonName, showCallingCode ? { width: 120 } : {}, currencyNameStyle]}>{name}</Text>
-                {showCallingCode && <Text style={[styles.commonCallingCode, symbolStyle]}>{`+${callingCode}`}</Text>}
+                <Text style={[styles.commonName, currencyNameStyle]}>{name}</Text>
+                <Text style={[styles.commonCallingCode, symbolStyle]}>{symbol}</Text>
+                <Text style={[styles.commonCallingCode, symbolStyle]}>{symbol_native}</Text>
             </View>
         );
     }
