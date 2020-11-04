@@ -1,5 +1,5 @@
-import { CurrencyPicker as CurrencyPickerComponent } from "./src/screens"
 import React from "react";
+import { CurrencyPicker as CurrencyPickerComponent } from "./src/screens"
 
 const DEFAULT_OPTIONS = {
     onSelectCurrency: () => { },

@@ -57,7 +57,7 @@ export const DialogCurrency = (props) => {
     });
 
     const fuse = new Fuse(
-        data.reduce(
+        currencies.reduce(
             (acc, item) => [
                 ...acc,
                 { id: item.code, name: item.name, code: item.code }
@@ -101,12 +101,12 @@ export const DialogCurrency = (props) => {
 
         let listDataFilter = [];
         if (value === "") {
-            listDataFilter = data;
+            listDataFilter = currencies;
         } else {
             const filteredCountries = fuse.search(value)
             if (_flatList) _flatList.scrollToOffset({ offset: 0 });
             filteredCountries.forEach(n => {
-                const item = data.filter(i => i.code === n.item.code.toString());
+                const item = currencies.filter(i => i.code === n.item.code.toString());
                 if (item.length > 0) listDataFilter.push(item[0])
 
             })

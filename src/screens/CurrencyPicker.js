@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Modal } from 'react-native';
 import { Styles, Colors } from '../styles';
 import dataCurrency from "../constants/CommonCurrency.json";
-import { DialogCountry } from '../components';
-import { CurrencyFlag } from "./CurrencyFlag";
+import { DialogCurrency } from '../components';
+import { CurrencyFlag } from "../components/CurrencyFlag";
 
-export const CountryPicker = (props) => {
+export const CurrencyPicker = (props) => {
 
     const [currencyName, setCurrencyName] = useState("US Dollar");
     const [code, setCode] = useState("USD");
@@ -85,7 +85,7 @@ export const CountryPicker = (props) => {
                 style={[Styles.justifyContent, container]}
             >
                 {renderChildren ? renderChildren : <View style={{ flexDirection: "row" }}>
-                    {showFlag && <CurrencyFlag currency={currencyCode} width={flagWidth} />}
+                    {showFlag && <CurrencyFlag currency={code} width={flagWidth} />}
                     {showCurrencyCode && <Text style={[styles.txtCurrencyCode, countryCodeStyle]}>{code}</Text>}
                     {showCurrencyName && <Text style={[styles.txtCountryName, countryNameStyle]}>{currencyName}</Text>}
                     {showSymbol && <Text style={[styles.txtCountryName, countryNameStyle]}>{symbol}</Text>}
@@ -95,10 +95,9 @@ export const CountryPicker = (props) => {
             <Modal
                 visible={visible}
             >
-                <DialogCountry
+                <DialogCurrency
                     onSelectItem={(data) => { onSelect(data) }}
-                    setVisible={(value) => { setVisible(value); onClose && onClose(); }}
-                    showCallingCode={showCallingCode}
+                    setVisible={(value) => { setVisible(value); onClose && onClose(); }} a
                     title={title}
                     searchPlaceholder={searchPlaceholder}
                     textEmpty={textEmpty}
