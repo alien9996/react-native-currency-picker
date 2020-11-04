@@ -11,13 +11,16 @@ import Fuse from 'fuse.js'
 import { Colors } from "../styles";
 import data from "../constants/CommonCurrency.json"
 import { getStyles } from "./styles"
+import { CurrencyFlag } from "./CurrencyFlag";
 
 export const DialogCurrency = (props) => {
+
+    const currencies = Object.values(data);
 
     const {
         onSelectItem,
         showCallingCode = true,
-        title = "Country",
+        title = "Currency",
         searchPlaceholder = "Search",
         textEmpty = "Empty data",
         setVisible,
@@ -28,11 +31,11 @@ export const DialogCurrency = (props) => {
     } = props;
 
     const [search, setSearch] = useState("");
-    const [listCountry, setListCountry] = useState(data);
+    const [listCurrency, setListCurrency] = useState(currencies);
 
     const { itemStyle = {}, container, searchStyle, tileStyle } = modalStyle;
 
-    const { itemContainer, flagStyle, countryCodeStyle, countryNameStyle, callingNameStyle } = itemStyle;
+    const { itemContainer, flagWidth = 25, currencyCodeStyle, currencyNameStyle, symbolStyle, symbolNativeStyle } = itemStyle;
 
     useEffect(() => {
         StatusBar.setHidden(true);
@@ -76,16 +79,16 @@ export const DialogCurrency = (props) => {
     const renderItemTemplate = ({ name, emoji, code, callingCode }) => {
         return (
             <View style={[styles.item, itemContainer]}>
-                <Text style={[styles.flag, flagStyle]}>{emoji}</Text>
-                <Text style={[styles.currencyName, countryCodeStyle]}>{code}</Text>
-                <Text style={[styles.commonName, showCallingCode ? { width: 120 } : {}, countryNameStyle]}>{name}</Text>
-                {showCallingCode && <Text style={[styles.commonCallingCode, callingNameStyle]}>{`+${callingCode}`}</Text>}
+                <CurrencyFlag currency={currencyCode} width={flagWidth} />
+                <Text style={[styles.currencyName, currencyCodeStyle]}>{code}</Text>
+                <Text style={[styles.commonName, showCallingCode ? { width: 120 } : {}, currencyNameStyle]}>{name}</Text>
+                {showCallingCode && <Text style={[styles.commonCallingCode, symbolStyle]}>{`+${callingCode}`}</Text>}
             </View>
         );
     }
 
     const renderItem = ({ item, index }) => {
-        const isLastItem = listCountry.length - 1 === index;
+        const isLastItem = listCurrency.length - 1 === index;
         return <TouchableOpacity style={{ marginBottom: isLastItem ? 150 : 0 }} onPress={() => onSelect(item)}>
             {renderItemTemplate(item)}
         </TouchableOpacity>
@@ -108,7 +111,7 @@ export const DialogCurrency = (props) => {
 
             })
         }
-        setListCountry(listDataFilter);
+        setListCurrency(listDataFilter);
     }
 
     return (
@@ -142,7 +145,7 @@ export const DialogCurrency = (props) => {
                 <FlatList
                     keyboardShouldPersistTaps={'handled'}
                     ref={(ref) => _flatList = ref}
-                    data={listCountry}
+                    data={listCurrency}
                     renderItem={renderItem}
                     keyExtractor={item => item.code}
                     ListEmptyComponent={() => <View style={styles.listNullContainer}>

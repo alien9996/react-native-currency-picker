@@ -2,11 +2,10 @@ import { CurrencyPicker as CurrencyPickerComponent } from "./src/screens"
 import React from "react";
 
 const DEFAULT_OPTIONS = {
-    onSelectCountry: () => { },
+    onSelectCurrency: () => { },
     style: {},
     showFlag: true,
-    showCallingCode: true,
-    showCountryName: true,
+    showCurrencyName: true,
     darkMode: true
 }
 

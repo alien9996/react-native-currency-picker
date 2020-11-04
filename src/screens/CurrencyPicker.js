@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Modal } from 'react-native';
-import { getCountry } from "react-native-localize";
 import { Styles, Colors } from '../styles';
-import dataCountry from "../constants/countries.json";
+import dataCurrency from "../constants/CommonCurrency.json";
 import { DialogCountry } from '../components';
+import { CurrencyFlag } from "./CurrencyFlag";
 
-export const CurrencyPicker = (props) => {
+export const CountryPicker = (props) => {
 
-    const [callingCode, setCallingCode] = useState("1");
-    const [flag, setFlag] = useState("🇺🇸");
-    const [countryName, setCountryName] = useState("United States");
-    const [code, setCode] = useState("US");
+    const [currencyName, setCurrencyName] = useState("US Dollar");
+    const [code, setCode] = useState("USD");
+    const [symbol, setSymbol] = useState("$");
+    const [symbolNative, setSymbolNative] = useState("$");
     const [visible, setVisible] = useState(false);
 
     const {
-        onSelectCountry,
-        countryCode,
+        onSelectCurrency,
+        currencyCode,
         showFlag = true,
-        showCallingCode = true,
-        showCountryName = true,
+        showCurrencyName = true,
+        showSymbol = true,
+        showNativeSymbol = true,
         darkMode = true,
         renderChildren,
-        showCountryCode = true,
+        showCurrencyCode = true,
 
-        countryPickerRef,
+        currencyPickerRef,
         enable = true,
         onOpen,
         onClose,
@@ -38,24 +39,22 @@ export const CurrencyPicker = (props) => {
         showModalTitle = true
     } = props;
 
-    const { container, flagStyle, callingCodeStyle, countryCodeStyle, countryNameStyle } = containerStyle;
+    const { container, flagWidth = 25, countryCodeStyle, countryNameStyle } = containerStyle;
 
     useEffect(() => {
-        let country = undefined;
-        countryPickerRef && countryPickerRef(countryRef);
+        let currency = undefined;
+        currencyPickerRef && currencyPickerRef(countryRef);
 
-        if (countryCode) {
-            country = dataCountry.filter(item => item.code === countryCode)[0];
-        } else {
-            country = getDeviceInfo();
+        if (currencyCode) {
+            currency = dataCurrency.filter(item => item.code === currencyCode)[0];
         }
 
-        if (country) {
-            const { callingCode, emoji, name, code } = country;
-            setCountryName(name)
-            setFlag(emoji);
-            setCallingCode(callingCode);
+        if (currency) {
+            const { code, symbol, symbol_native, name } = currency;
+            setCurrencyName(name);
             setCode(code);
+            setSymbol(symbol);
+            setSymbolNative(symbol_native);
         }
     }, [props]);
 
@@ -70,30 +69,13 @@ export const CurrencyPicker = (props) => {
         }
     }
 
-    const getDeviceInfo = () => {
-        let countryInfo = {};
-        const deviceCountry = getCountry();
-        if (deviceCountry) {
-            countryInfo = dataCountry.filter(item => item.code === deviceCountry)[0];
-        };
-
-        if (countryInfo) return countryInfo;
-        else return {
-            code: "US",
-            unicode: "U+1F1FA U+1F1F8",
-            name: "United States",
-            emoji: "🇺🇸",
-            callingCode: "1",
-        }
-    }
-
     const onSelect = (data) => {
-        const { callingCode, emoji, name, code } = data;
-        setFlag(emoji);
-        onSelectCountry && onSelectCountry(data);
-        setCallingCode(callingCode ? callingCode : "1");
-        setCountryName(name);
+        const { code, symbol, symbol_native, name } = data;
+        onSelectCurrency && onSelectCurrency(data);
+        setCurrencyName(name);
         setCode(code);
+        setSymbol(symbol);
+        setSymbolNative(symbol_native);
     }
 
     return (
@@ -103,10 +85,11 @@ export const CurrencyPicker = (props) => {
                 style={[Styles.justifyContent, container]}
             >
                 {renderChildren ? renderChildren : <View style={{ flexDirection: "row" }}>
-                    {showFlag && <Text style={[styles.flagStyle, flagStyle]}>{flag}</Text>}
-                    {showCallingCode && <Text style={[styles.callingCodeStyle, callingCodeStyle]}>+{callingCode}</Text>}
-                    {showCountryCode && <Text style={[styles.txtCountryCode, countryCodeStyle]}>{code}</Text>}
-                    {showCountryName && <Text style={[styles.txtCountryName, countryNameStyle]}>{countryName}</Text>}
+                    {showFlag && <CurrencyFlag currency={currencyCode} width={flagWidth} />}
+                    {showCurrencyCode && <Text style={[styles.txtCountryCode, countryCodeStyle]}>{code}</Text>}
+                    {showCurrencyName && <Text style={[styles.txtCountryName, countryNameStyle]}>{currencyName}</Text>}
+                    {showSymbol && <Text style={[styles.txtCountryName, countryNameStyle]}>{symbol}</Text>}
+                    {showNativeSymbol && <Text style={[styles.txtCountryName, countryNameStyle]}>{symbolNative}</Text>}
                 </View>}
             </TouchableOpacity> : null}
             <Modal
