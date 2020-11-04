@@ -1,0 +1,44 @@
+{
+  "name": "react-native-currency-picker",
+  "version": "1.0.0",
+  "author": "Alien",
+  "license": "MIT",
+  "description": "React native library country picker",
+  "private": false,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "android",
+    "IOS",
+    "library",
+    "country",
+    "currency",
+    "region",
+    "picker",
+    "currency-picker"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alien9996/react-native-currency-picker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/alien9996/react-native-currency-picker.git/issues"
+  },
+  "homepage": "https://github.com/alien9996/react-native-currency-picker.git#readme",
+  "peerDependencies": {
+    "react-native": "^0.41.2",
+    "react-native-windows": "0.41.0-rc.1"
+  },
+  "dependencies": {
+    "fuse.js": "^6.4.1",
+    "react-native-auto-height-image": "^3.2.3",
+    "react-native-localize": "^1.4.2",
+    "react-native-status-bar-height": "^2.5.0"
+  },
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.63.0"
+  }
+}
