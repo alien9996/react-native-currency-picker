@@ -91,26 +91,27 @@ currencyPickerRef.close();
 | symbolStyle (Object)   | style      | Style for currency symbol. |
 | symbolNativeStyle (Object)   | style      | Style for currency native symbol. |
 
+
 ## modalStyle
 
-| Props                | Style | Options/Info |
-| -------------------- | ------- | 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Props                | Default | Options/Info |
+| -------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | container (Object)     | style      | Style for modal container |
 | searchStyle (Object)   | style      | Style for modal search input  |
 | tileStyle (Object)     | style      | Style for modal title |
-| itemStyle (Object)     | style      | Style for item select currency |\
+| itemStyle (Object)     | style      | Style for item select currency |
 
 
-## modalStyle
-| Props                | Style | Options/Info |
-| -------------------- | ------- | 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+## itemStyle
+
+| Props                | Default | Options/Info |
+| -------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | itemContainer (Object)     | style      | Style for item currency container |
 | flagWidth (number)     | default: 25    | Width for the icon currency |
 | currencyCodeStyle (Object)   | style    | Style for currency code   |
 | currencyNameStyle (Object)     | style  | Style for currency name |
 | symbolStyle (Object)   | style      | Style for currency symbol |
 | symbolNativeStyle (Object)   | style      | Style for currency native symbol |
+
 
 ### Thank you for your interest!
