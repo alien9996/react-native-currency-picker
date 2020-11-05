@@ -20,7 +20,7 @@ export const CurrencyPicker = (props) => {
         currencyCode,
         showFlag = true,
         showCurrencyName = true,
-        showSymbol = true,
+        showSymbol = false,
         showNativeSymbol = true,
         darkMode = true,
         renderChildren,
@@ -41,7 +41,7 @@ export const CurrencyPicker = (props) => {
         showModalTitle = true,
     } = props;
 
-    const { container, flagWidth = 25, countryCodeStyle, countryNameStyle } = containerStyle;
+    const { container, flagWidth = 25, currencyCodeStyle, currencyNameStyle, symbolStyle, symbolNativeStyle } = containerStyle;
 
     useEffect(() => {
         let currency = undefined;
@@ -88,10 +88,10 @@ export const CurrencyPicker = (props) => {
             >
                 {renderChildren ? renderChildren : <View style={{ flexDirection: "row" }}>
                     {showFlag && <CurrencyFlag currency={code} width={flagWidth} />}
-                    {showCurrencyCode && <Text style={[styles.txtCurrencyCode, countryCodeStyle]}>{code}</Text>}
-                    {showCurrencyName && <Text style={[styles.txtCountryName, countryNameStyle]}>{currencyName}</Text>}
-                    {showSymbol && <Text style={[styles.txtCountryName, countryNameStyle]}>{symbol}</Text>}
-                    {showNativeSymbol && <Text style={[styles.txtCountryName, countryNameStyle]}>{symbolNative}</Text>}
+                    {showCurrencyCode && <Text style={[styles.txtCurrencyCode, currencyCodeStyle]}>{code}</Text>}
+                    {showCurrencyName && <Text style={[styles.txtCountryName, currencyNameStyle]}>{currencyName}</Text>}
+                    {showSymbol && <Text style={[styles.txtCountryName, symbolStyle]}>{symbol}</Text>}
+                    {showNativeSymbol && <Text style={[styles.txtCountryName, symbolNativeStyle]}>{symbolNative}</Text>}
                 </View>}
             </TouchableOpacity> : null}
             <Modal

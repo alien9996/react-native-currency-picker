@@ -1,6 +1,6 @@
 # react-native-currency-picker
 
-**Various country picker** for **iOS** and **Android**
+**Various currency picker** for **iOS** and **Android**
 
 ## Demo
 
@@ -17,36 +17,100 @@ OR
 ## Example
 
 ```javascript
-import RNImageFilter from "react-native-image-filter";
+import CurrencyPicker from "react-native-currency-picker"
 
-RNImageFilter.getSourceImage(
-  {
-    imageSource: "/storage/emulated/0/Download/img2-0.jpg",
-    dataType: "Path",
-    filterType: 1,
-  },
-  (source) => {
-    this.setState((imgBase64: source.base64));
-    console.log("SOURCE", source);
-    // source returns the height, width and the Base64 string of the image.
-  }
-);
+let currencyPickerRef = undefined;
+
+// use currencyPickerRef
+currencyPickerRef.open();
+currencyPickerRef.close();
+
+<CurrencyPicker
+  currencyPickerRef={(ref) => {currencyPickerRef = ref}}
+  enable={true}
+  darkMode={false}
+  currencyCode={"EUR"}
+  onSelectCurrency={(data) => { console.log("DATA", data) }}
+  showNativeSymbol={true}
+  showSymbol={false}
+  containerStyle={{
+      container: {},
+      flagWidth: 25,
+      currencyCodeStyle: {},
+      currencyNameStyle: {},
+      symbolStyle: {},
+      symbolNativeStyle: {}
+  }}
+  modalStyle={{
+      container: {},
+      searchStyle: {},
+      tileStyle: {},
+      itemStyle: {
+        itemContainer: {},
+        flagWidth: 25,
+        currencyCodeStyle: {},
+        currencyNameStyle: {},
+        symbolStyle: {},
+        symbolNativeStyle: {}
+      }
+  }}
+  title={"Currency"}
+  searchPlaceholder={"Search"}
+  showCloseButton={true}
+  showModalTitle={true}
+/>
+
 ```
 
 ## Options
 
-| Props                | Default | Options/Info                                                                                                                                                           |
+| Props                | Default | Options/Info |
 | -------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| imageSource (String) | null    | The path to the image in the device or a Base64 string.                                                                                                                |
-| dataType (String)    | Path    | If you send a path, enter the string "Path"<br>If you send a Base64 string, enter the string "Base64".                                                                 |
-| filterType (int)     | 0       | Select the type you want to filter images, the values from 0 to 21. Other values around 0 to 21 will not take effect.<br> **Note**: Valid only when dataType = "Path". |
+| enable (Boolean)             | true    | Show component that choose the currency. |
+| currencyPickerRef (Function) | null    | Get the open() and close() modal methods. |
+| darkMode (Boolean)           | true    | Dark mode for currency modal. |
+| currencyCode (String)        | USD     | Currency code displayed is selected at start. |
+| onSelectCurrency (Function)  | null    | Called when the user chooses a currency and returns information for the selected currency. |
+| showNativeSymbol (Boolean)   | true    | Show the native symbol of the currency. |
+| showSymbol (Boolean)         | false   | Show the symbol of the currency. |
+| title  (String)              | "Currency"  | The title of the modal select currency. |
+| showCloseButton  (Boolean)   | true    | Show the close button of the modal select currency. |
+| showModalTitle  (Boolean)    | true    | Show the title of the modal select currency. |
+| containerStyle  (Object)     | null    | Style for component that choose the currency. |
+| modalStyle  (Object)         | null    | Style for modal select currency. |
 
-## Filter types
+## containerStyle
 
-![filterType](https://github.com/alien9996/ReactNativeImageFilter/blob/master/filter_type.png?raw=true)
+| Props                | Style | Options/Info |
+| -------------------- | ------- | 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| container (Object)     | style          | Style for component container |
+| flagWidth (number)     | default: 25    | Width for the icon currency |
+| currencyCodeStyle (Object)   | style      | Style for currency code |
+| currencyNameStyle (Object)     | style  | Style for currency name |
+| symbolStyle (Object)   | style      | Style for currency symbol |
+| symbolNativeStyle (Object)   | style      | Style for currency native symbol |
 
-## Note
+## modalStyle
 
-- The image path you send into **imageSource:''** must be the absolute path. If you have problems with the absolute path, you can find the solution [here](https://stackoverflow.com/questions/52423067/how-to-get-absolute-path-of-a-file-in-react-native).
+| Props                | Style | Options/Info |
+| -------------------- | ------- | 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| container (Object)     | style      | Style for modal container |
+| searchStyle (Object)   | style      | Style for modal search input  |
+| tileStyle (Object)     | style      | Style for modal title |
+| itemStyle (Object)     | style      | Style for item select currency |\
+
+
+## modalStyle
+| Props                | Style | Options/Info |
+| -------------------- | ------- | 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| itemContainer (Object)     | style      | Style for item currency container |
+| flagWidth (number)     | default: 25    | Width for the icon currency |
+| currencyCodeStyle (Object)   | style    | Style for currency code   |
+| currencyNameStyle (Object)     | style  | Style for currency name |
+| symbolStyle (Object)   | style      | Style for currency symbol |
+| symbolNativeStyle (Object)   | style      | Style for currency native symbol |
 
 ### Thank you for your interest!
