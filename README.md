@@ -1,4 +1,4 @@
-# react-native-region-country-picker
+# react-native-currency-picker
 
 **Various country picker** for **iOS** and **Android**
 
@@ -8,11 +8,11 @@
 
 ## Getting started
 
-`$ npm install react-native-region-country-picker --save`
+`$ npm install react-native-currency-picker --save`
 <br>
 OR
 <br>
-`$ yarn add react-native-region-country-picker`
+`$ yarn add react-native-currency-picker`
 
 ## Example
 

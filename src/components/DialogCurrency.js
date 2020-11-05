@@ -26,7 +26,9 @@ export const DialogCurrency = (props) => {
         darkMode = true,
         modalStyle,
         showCloseButton = true,
-        showModalTitle = true
+        showModalTitle = true,
+        showCurrencySymbol = false,
+        showCurrencyNativeSymbol = true
     } = props;
 
     const [search, setSearch] = useState("");
@@ -76,13 +78,16 @@ export const DialogCurrency = (props) => {
     }
 
     const renderItemTemplate = ({ code, symbol, symbol_native, name }) => {
+
+        const showSymbol = showCurrencySymbol || showCurrencyNativeSymbol;
+
         return (
             <View style={[styles.item, itemContainer]}>
                 <CurrencyFlag currency={code} width={flagWidth} />
                 <Text style={[styles.currencyName, currencyCodeStyle]}>{code}</Text>
-                <Text style={[styles.commonName, currencyNameStyle]}>{name}</Text>
-                <Text style={[styles.commonCallingCode, symbolStyle]}>{symbol}</Text>
-                <Text style={[styles.commonCallingCode, symbolStyle]}>{symbol_native}</Text>
+                <Text style={[styles.commonName, showSymbol && { width: 120 }, currencyNameStyle]}>{name}</Text>
+                {showCurrencySymbol && <Text style={[styles.commonSymbolCode, symbolStyle]}>{symbol}</Text>}
+                {showCurrencyNativeSymbol && <Text style={[styles.commonSymbolCode, symbolNativeStyle]}>{symbol_native}</Text>}
             </View>
         );
     }

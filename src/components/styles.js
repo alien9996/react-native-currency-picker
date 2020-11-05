@@ -42,7 +42,7 @@ export const getStyles = (darkTheme = true) => {
             marginHorizontal: 20,
             fontSize: 14
         },
-        commonCallingCode: {
+        commonSymbolCode: {
             color: Colors.txtCallingCode,
             marginBottom: marginBottomByPlatform,
             marginLeft: 20,

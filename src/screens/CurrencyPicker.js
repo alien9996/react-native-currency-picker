@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, TouchableOpacity, Text, Modal } from 'react-native';
-import { Styles, Colors } from '../styles';
+import { Styles } from '../styles';
 import dataCurrency from "../constants/CommonCurrency.json";
 import { DialogCurrency } from '../components';
 import { CurrencyFlag } from "../components/CurrencyFlag";
 
 export const CurrencyPicker = (props) => {
+
+    const currencies = Object.values(dataCurrency);
 
     const [currencyName, setCurrencyName] = useState("US Dollar");
     const [code, setCode] = useState("USD");
@@ -36,17 +38,17 @@ export const CurrencyPicker = (props) => {
         searchPlaceholder,
         textEmpty,
         showCloseButton = true,
-        showModalTitle = true
+        showModalTitle = true,
     } = props;
 
     const { container, flagWidth = 25, countryCodeStyle, countryNameStyle } = containerStyle;
 
     useEffect(() => {
         let currency = undefined;
-        currencyPickerRef && currencyPickerRef(countryRef);
+        currencyPickerRef && currencyPickerRef(currencyRef);
 
         if (currencyCode) {
-            currency = dataCurrency.filter(item => item.code === currencyCode)[0];
+            currency = currencies.filter(item => item.code === currencyCode)[0];
         }
 
         if (currency) {
@@ -58,7 +60,7 @@ export const CurrencyPicker = (props) => {
         }
     }, [props]);
 
-    const countryRef = {
+    const currencyRef = {
         open: () => {
             setVisible(true);
             onOpen && onOpen();
@@ -97,7 +99,7 @@ export const CurrencyPicker = (props) => {
             >
                 <DialogCurrency
                     onSelectItem={(data) => { onSelect(data) }}
-                    setVisible={(value) => { setVisible(value); onClose && onClose(); }} a
+                    setVisible={(value) => { setVisible(value); onClose && onClose(); }}
                     title={title}
                     searchPlaceholder={searchPlaceholder}
                     textEmpty={textEmpty}
@@ -105,6 +107,8 @@ export const CurrencyPicker = (props) => {
                     modalStyle={modalStyle}
                     showCloseButton={showCloseButton}
                     showModalTitle={showModalTitle}
+                    showCurrencySymbol={showSymbol}
+                    showCurrencyNativeSymbol={showNativeSymbol}
                 />
             </Modal>
         </View>
