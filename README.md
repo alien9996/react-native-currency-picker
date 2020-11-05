@@ -76,8 +76,8 @@ currencyPickerRef.close();
 | title  (String)              | "Currency"  | The title of the modal select currency. |
 | showCloseButton  (Boolean)   | true    | Show the close button of the modal select currency. |
 | showModalTitle  (Boolean)    | true    | Show the title of the modal select currency. |
-| containerStyle  (Object)     | null    | Style for component that choose the currency. |
-| modalStyle  (Object)         | null    | Style for modal select currency. |
+| containerStyle  (Object)     | null    | Style for component that choose the currency. <br> **Note**: See more details below. |
+| modalStyle  (Object)         | null    | Style for modal select currency. <br> **Note**: See more details below. |
 
 
 ## containerStyle
@@ -99,7 +99,7 @@ currencyPickerRef.close();
 | container (Object)     | style      | Style for modal container |
 | searchStyle (Object)   | style      | Style for modal search input  |
 | tileStyle (Object)     | style      | Style for modal title |
-| itemStyle (Object)     | style      | Style for item select currency |
+| itemStyle (Object)     | style      | Style for item select currency <br> **Note**: See more details below. |
 
 
 ## itemStyle
