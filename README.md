@@ -78,7 +78,9 @@ currencyPickerRef.close();
 | showModalTitle  (Boolean)    | true    | Show the title of the modal select currency. |
 | containerStyle  (Object)     | null    | Style for component that choose the currency. |
 | modalStyle  (Object)         | null    | Style for modal select currency. |
-## Options
+
+
+## containerStyle
 
 | Props                | Default | Options/Info |
 | -------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
