@@ -84,30 +84,12 @@ currencyPickerRef.close();
 
 | Props                | Default | Options/Info |
 | -------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| enable (Boolean)             | true    | Show component that choose the currency. |
-| currencyPickerRef (Function) | null    | Get the open() and close() modal methods. |
-| darkMode (Boolean)           | true    | Dark mode for currency modal. |
-| currencyCode (String)        | USD     | Currency code displayed is selected at start. |
-| onSelectCurrency (Function)  | null    | Called when the user chooses a currency and returns information for the selected currency. |
-| showNativeSymbol (Boolean)   | true    | Show the native symbol of the currency. |
-| showSymbol (Boolean)         | false   | Show the symbol of the currency. |
-| title  (String)              | "Currency"  | The title of the modal select currency. |
-| showCloseButton  (Boolean)   | true    | Show the close button of the modal select currency. |
-| showModalTitle  (Boolean)    | true    | Show the title of the modal select currency. |
-| containerStyle  (Object)     | null    | Style for component that choose the currency. |
-| modalStyle  (Object)         | null    | Style for modal select currency. |
-
-## containerStyle
-
-| Props                | Style | Options/Info |
-| -------------------- | ------- | 
----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| container (Object)     | style          | Style for component container |
-| flagWidth (number)     | default: 25    | Width for the icon currency |
-| currencyCodeStyle (Object)   | style      | Style for currency code |
-| currencyNameStyle (Object)     | style  | Style for currency name |
-| symbolStyle (Object)   | style      | Style for currency symbol |
-| symbolNativeStyle (Object)   | style      | Style for currency native symbol |
+| container (Object)     | style          | Style for component container. |
+| flagWidth (number)     | default: 25    | Width for the icon currency. |
+| currencyCodeStyle (Object)   | style      | Style for currency code. |
+| currencyNameStyle (Object)     | style  | Style for currency name. |
+| symbolStyle (Object)   | style      | Style for currency symbol. |
+| symbolNativeStyle (Object)   | style      | Style for currency native symbol. |
 
 ## modalStyle
 
