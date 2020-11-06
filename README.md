@@ -30,7 +30,12 @@ currencyPickerRef.close();
   enable={true}
   darkMode={false}
   currencyCode={"EUR"}
+  showFlag={true}
+  showCurrencyName={true}
+  showCurrencyCode={true}
   onSelectCurrency={(data) => { console.log("DATA", data) }}
+  onOpen={() => {console.log("Open")}}
+  onClose={() => {console.log("Close")}}
   showNativeSymbol={true}
   showSymbol={false}
   containerStyle={{
@@ -71,13 +76,19 @@ currencyPickerRef.close();
 | darkMode (Boolean)           | true    | Dark mode for currency modal. |
 | currencyCode (String)        | USD     | Currency code displayed is selected at start. |
 | onSelectCurrency (Function)  | null    | Called when the user chooses a currency and returns information for the selected currency. |
+| onOpen (Function)            | null      | Called when the open modal.                                                              |
+| onClose (Function)           | null      | Called when the close modal.                                                             |
 | showNativeSymbol (Boolean)   | true    | Show the native symbol of the currency. |
 | showSymbol (Boolean)         | false   | Show the symbol of the currency. |
+| showFlag (Boolean)           | true    | Show the icon of the currency. |
+| showCurrencyName (Boolean)   | true    | Show the name of the currency. |
+| showCurrencyCode (Boolean)   | true    | Show the code of the currency. |
 | title  (String)              | "Currency"  | The title of the modal select currency. |
 | showCloseButton  (Boolean)   | true    | Show the close button of the modal select currency. |
 | showModalTitle  (Boolean)    | true    | Show the title of the modal select currency. |
 | containerStyle  (Object)     | null    | Style for component that choose the currency. <br> **Note**: See more details below. |
 | modalStyle  (Object)         | null    | Style for modal select currency. <br> **Note**: See more details below. |
+| renderChildren (Component)   | null    | The child component replaces the component element of the library    |
 
 
 ## containerStyle
