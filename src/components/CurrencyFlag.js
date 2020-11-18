@@ -3,9 +3,10 @@ import { View } from 'react-native'
 import AutoHeightImage from "react-native-auto-height-image";
 
 export const CurrencyFlag = (props) => {
-    const img = data[props.currency];
-    if (!img) return <View style={{ width: 25 }} />;
-    return <AutoHeightImage source={{ uri: img }} width={25} />
+    const { currency, width } = props;
+    const img = data[currency];
+    if (!img) return <View style={{ width: width }} />;
+    return <AutoHeightImage source={{ uri: img }} width={width} />
 }
 
 const data = {
